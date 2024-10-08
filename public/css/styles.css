@@ -4,3 +4,199 @@
 *:after {
   box-sizing: border-box;
 }
+
+:root{
+  --black: #1c1c1c;
+  --gray: #7e7e7e;
+  --white: white;
+  --border-color: aqua;
+  --font-size-md: clamp(2.0rem, 2.0vw + 1.8rem, 2.11rem);
+  --font-size-sm: clamp(1.2rem, 0.6vw + 1.1rem, 1.56rem);
+  --font-size-lg: clamp(2.3rem, 2.30vw + 1.65rem, 3.0rem);
+  --border-radius: 5px;
+  --blue:rgb(78, 72, 236);
+} 
+
+
+body{
+  background-image: url('/images/site/checkerboard.jpg');
+  background-size: 50%;
+}
+
+#wrapper{
+  max-width: 980px;
+  margin: 20px auto;
+  padding: 40px 20px;
+  border: 6px solid var(--border-color) ;
+  background-color: var(--white) ;
+  border-radius: 10px;
+}
+#top-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.siteName{
+  font-size: var(--font-size-lg);
+  
+}
+
+.siteName a, #tools a{
+  text-decoration: none;
+  color: var(--black);
+  color: var(--black);
+  font-weight: bold;
+}
+
+nav {
+  width: 100%;
+  height: 50px;
+  background-color: var(--black);
+  
+}
+
+nav ul{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-left: 0;
+  
+}
+
+nav ul li{
+  color: var(--white);
+  list-style: none;
+  font-size: 1.2em; /* Aumentar el tamaño de la fuente */
+ 
+}
+
+.hero{
+  width: 100%;
+  position: relative;
+  color: aqua;
+  
+}
+
+.dmc__delorean h3 {
+  color: #0dcbec; /* Color turquesa */
+  font-weight: bold; /* Hacer el texto más grueso */
+  font-size: 2em; /* Aumentar el tamaño de la fuente */
+  margin: 10px 0; /* Espaciado vertical */
+}
+
+.dmc__delorean p {
+  color: #0dcbec; /* Color turquesa */
+  font-size: 1.5em; /* Aumentar el tamaño de la fuente */
+  margin: 7px 0; /* Espaciado vertical */
+}
+
+.hero img {
+    width: 95%; /* Ajusta el ancho a 100% del contenedor padre */
+}
+ 
+
+
+
+.dmc__delorean{
+  background-color: rgb(255, 255, 255, 0.8);
+  transform: translate(-20%, -50%); /* Ajusta la posición para centrar */
+  text-align: center; /* Centra el texto dentro del cuadro */
+  position: absolute;
+  left: 70px;
+  bottom: 50px;
+  color: var(--blue);
+  
+}
+
+.delorean-title {
+  text-align: center; /* Centra el texto */
+  margin-bottom: 20px; /* Espacio debajo del título */
+  font-size: 24px; /* Tamaño de fuente deseado */
+  position: absolute;
+  
+}
+
+
+.dmc__delorean img{
+  width: 60%;
+}
+
+.section__delorean{
+  display: flex;
+  flex-direction: row;
+ margin: 30px 0;
+}
+
+.delorean__upgrades{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 20px;
+  flex: 1;
+  padding-top: 80px; /* Espacio adicional desde la parte superior */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Alinea horizontalmente el contenido al centro */
+  justify-content: center; /* Alinea verticalmente el contenido al centro */
+  padding: 30px; /* Espacio interno */
+  width: 80%; /* Asegura que la tarjeta ocupe el ancho deseado */
+  margin: 0 auto; /* Centra la tarjeta en el contenedor padre */
+}
+
+.card img{
+  background-color: #00BFFF; /* Fondo solo para la imagen */
+  padding: 25px; /* Espacio alrededor de la imagen */
+  width: 100%; /* Ancho de la imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
+  
+}
+
+.card p{
+  text-align: center; /* Centra el texto */
+  margin-top: 10px; /* Agrega espacio entre la imagen y el texto */
+  color: black; /* Color del texto (ajusta si es necesario) */
+  background-color: transparent; /* Hace que el fondo del texto sea transparente */
+}
+
+.delorean__reviews {
+  flex: 1; /* Permite que tome el mismo espacio */
+  padding: 10px; /* Espacio interno uniforme */
+}
+
+.delorean__reviews li {
+  margin: 15px 0; /* Aumenta el margen entre cada elemento de la lista */
+  line-height: 4; /* Aumenta la altura de línea para más separación visual */
+  padding-top: 25px; /* Espacio adicional desde la parte superior */
+}
+
+/*SCREEN MOBILE
+/*
+/*
+/*
+/*
+/* Media Queries */
+@media (min-width: 768px) {
+  #wrapper {
+    max-width: 80%;
+  }
+
+  .section__delorean {
+    flex-direction: row;
+  }
+
+  .delorean__upgrades {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .delorean__reviews {
+    margin-left: 20px;
+  }
+}
