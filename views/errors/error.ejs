@@ -1,0 +1,11 @@
+<div id="error-wrapper">
+    <% if (title) { %>
+    <h1 class="error-title"><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+      } %>
+  
+    <h3 class="error-message"><%- message || 'An unexpected error occurred. Please try again later.' %></h3>
+  
+    <a href="/" class="error-link">Return to Homepage</a>
+  </div>
