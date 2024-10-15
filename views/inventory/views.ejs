@@ -1,0 +1,9 @@
+<%# Content Heading %>
+<% if (title) { %>
+    <h1 class="global_h1_title"><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+  } %>
+  
+  <%# messages() %>
+  <%- grid %>

@@ -6,7 +6,32 @@ const utilities = require("../utilities")
 
 // Route to build inventory by classification view
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
-// Route to build inventory item detail view
-router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildByInventoryId));
+router.get("/detail/:invId", utilities.handleErrors(invController.buildByInventoryId));
+router.get("/error", utilities.handleErrors(invController.buildError));
+router.get("/", utilities.handleErrors(invController.buildManagement));
+router.get("/add-classification", utilities.handleErrors(invController.buildAddView));
+router.get("/add-inventory", utilities.handleErrors(invController.buildAddInv));
+
+//EL CODIGO SE ROMPRE CUANDO AGREGO ESTE CODIGO
+//THE CODE BREAKS WHEN I ADD THIS CODE
+
+/*router.post(
+    "/add-classification", 
+    invValidate.classificationRules(),
+    invValidate.checkClassificationName,
+    utilities.handleErrors(invController.addClassification)
+)
+
+router.post(
+    "/add-inventory",
+    invValidate.invRules(),
+    invValidate.checkInvName,
+    utilities.handleErrors(invController.addInventory)
+)*/
+
+router.get(
+    "/getInventory/:classification_id",
+    utilities.handleErrors(invController.getInventoryJSON)
+)
 
 module.exports = router;
