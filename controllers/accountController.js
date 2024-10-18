@@ -156,7 +156,7 @@ async function buildManagement(req, res, next) {
     nav,
     title: "Account Management",
     errors: null,
-    account_firstname: res.locals.accountData.account_firstname
+    //account_firstname: res.locals.accountData.account_firstname
   })
 } 
 

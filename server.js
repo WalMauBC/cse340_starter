@@ -15,7 +15,8 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require('./utilities/')
 const session = require("express-session")
 const pool = require('./database')
-
+const accountRoute = require("./routes/accountRoute")
+const bcrypt = require("bcrypt")
 
 /********** 
 * Middleware
@@ -54,8 +55,8 @@ app.use(require("./routes/static"))
 app.get("/", baseController.buildHome)
 // Inventory route
 app.use("/inv", inventoryRoute)
-
-
+// Account route
+app.use("/account", accountRoute)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
