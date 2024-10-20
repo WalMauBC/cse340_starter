@@ -23,7 +23,7 @@ router.post(
   )
 
 router.get('/',
-  //utilities.checkLogin,
+  utilities.checkLogin,
   utilities.handleErrors(accountController.buildManagement))
 
 module.exports =router

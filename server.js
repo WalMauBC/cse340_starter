@@ -17,6 +17,7 @@ const session = require("express-session")
 const pool = require('./database')
 const accountRoute = require("./routes/accountRoute")
 const bcrypt = require("bcrypt")
+const cookieParser = require("cookie-parser")
 
 /********** 
 * Middleware
@@ -57,6 +58,10 @@ app.get("/", baseController.buildHome)
 app.use("/inv", inventoryRoute)
 // Account route
 app.use("/account", accountRoute)
+//Cookie Parser
+app.use(cookieParser())
+
+app.use(utilities.checkJWTToken)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
