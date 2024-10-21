@@ -11,6 +11,11 @@
     <% } %>
 
     <ul>
+        <li class="font-1">You have <%= typeof msgNum !== 'undefined' ? msgNum : 0 %> unread messages</li>
+        <li class="font-1">Go to <a href="/message/">Inbox</a></li>
+    </ul>
+
+    <ul>
         <li><a href="/inv/add-classification">Add New Classification</a></li>
         <li><a href="/inv/add-inventory">Add New Vehicle</a></li>
     </ul>

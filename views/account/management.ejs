@@ -10,26 +10,27 @@
     <% if (errors) { %>
         <ul class="notice">
             <% errors.array().forEach(error => { %>
-                <li><%= error.msg%></li>
+                <li><%= error.msg %></li>
             <% }) %>
         </ul>
     <% } %>
 
-     <h3>Message Center</h3>
+    <!-- Message Center -->
+    <h3>Message Center</h3>
     <ul>
-        <li class="font-1">You have <%= msgNum %> unread messages</li>
+        <li class="font-1">You have <%= msgNum !== undefined ? msgNum : 0 %> unread messages</li>
         <li class="font-1">Go to <a href="/message/">Inbox</a></li>
     </ul>
 
-    <% if (locals.accountData.account_type === "Employee" || locals.accountData.account_type === "Admin") { %>
+    <!-- Mostrar gestión de inventario solo si es empleado o administrador -->
+    <% if (locals.accountData && (locals.accountData.account_type === "Employee" || locals.accountData.account_type === "Admin")) { %>
         <br>
         <div class="inv-management-container">
             <h3>Inventory Management</h3>
             <div><a href="/inv">Manage Inventory</a></div>
         </div>
     <% } %>
-</div>
 
-    <p><a href="/inv">Edit Account Information</a></p>
-    
+    <!-- Enlace para editar la información de la cuenta -->
+    <p><a href="/account/edit">Edit Account Information</a></p>
 </div>
