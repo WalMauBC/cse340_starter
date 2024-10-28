@@ -3,6 +3,9 @@ const invModel = require("../models/inventory-model")
 const { body, validationResult } = require("express-validator")
 const validate = {}
 
+/* **********************************
+*  New Classification Data Validation Rules
+* ********************************* */
 validate.classificationRules = () => {
     return [
         body("classification_name")

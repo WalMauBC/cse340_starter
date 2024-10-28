@@ -14,7 +14,7 @@ const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const accountRoute = require("./routes/accountRoute")
 //const reviewRoute = require("./routes/reviewRoute")
-//const serverErrorRoute = require("./routes/serverErrorRoute")
+//const errorRoute = require("./routes/errorRoute")
 const utilities = require("./utilities/")
 const session = require("express-session")
 const pool = require('./database/')
@@ -42,9 +42,11 @@ app.use(function (req, res, next) {
   next()
 })
 
+// Body Parser Middleware
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
+// Cookie Parser Middleware
 app.use(cookieParser())
 app.use(utilities.checkJWTToken)
 
@@ -65,6 +67,11 @@ app.get("/", baseController.buildHome)
 app.use("/inv", inventoryRoute)
 // Account route
 app.use("/account", accountRoute)
+//Review routes
+//app.use("/review", reviewRoute)
+//error routes
+//app.use(errorRoute)
+// Error Handling Middleware
 
 
 // File Not Found Route - must be last route in list

@@ -1,0 +1,44 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else { res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+    <% } %>
+    
+    <div class="form-card">
+      <form id="delete-review-form" action="/review/delete-review" method="post">
+        <p>Confirm that this is the correct review. This deletion cannot be undone!</p>
+        <label
+          >Review Date:
+          <input
+            type="text"
+            name="review_date"
+            class="form-input"
+            readonly
+            disabled
+            value="<%- review_date %>"
+          >
+        </label>
+        <label
+          >Review:
+          <textarea
+            name="review_text"
+            class="form-input"
+            required
+            disabled
+          ><%= review_text %></textarea>
+        </label>
+        <input
+          type="submit"
+          value="Confirm Delete"
+          class="form-button"
+          title="Click here to delete your review"
+          id="delete-review-btn"
+        >
+    
+        <input type="hidden" name="review_id" value="<%- review_id %>">
+      </form>
+    </div>

@@ -1,0 +1,86 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else { res.redirect('/') } %> <%- messages() %> <% if (errors) { %>
+    <ul class="notice">
+      <% errors.array().forEach(error => { %>
+      <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+    <% } %>
+    
+    <div class="form-card">
+      <form id="edit-account-form" action="/account/edit-account" method="post">
+        <p>*All fields are required</p>
+        <label
+          >First Name:
+          <input
+            type="text"
+            name="account_firstname"
+            class="form-input"
+            required
+            value="<%= locals.account_firstname %>">
+          </label
+        ><br>
+        <label
+          >Last Name:
+          <input
+            type="text"
+            name="account_lastname"
+            class="form-input"
+            required
+            value="<%= locals.account_lastname %>">
+        </label
+        ><br>
+        <label
+          >Email:
+          <input
+            type="email"
+            name="account_email"
+            class="form-input"
+            required
+            placeholder="Enter a valid email address"
+            value="<%= locals.account_email %>">
+        </label>
+        
+        <input
+          type="submit"
+          value="Update"
+          class="form-button"
+          title="Click here to submit registration">
+        <input type="hidden" name="account_id" 
+        <% if(locals.account_id) { %> value="<%= locals.account_id %> " <% } %>>
+      </form>
+      <hr>
+    
+      <form id="password-form" action="/account/edit-password" method="post">
+        <h2>Update Password</h2>
+        <p>*Note your original password will be changed.</p>
+      <label
+          >Password:
+          <input
+            type="password"
+            name="account_password"
+            class="form-input"
+            required
+            pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+          > </label
+        ><br>
+        <div class="validation-note">
+          <p>Password must be:</p>
+          <ul>
+            <li>12 characters in length, min</li>
+            <li>contain at least 1 capital letter</li>
+            <li>contain at least 1 number</li>
+            <li>contain at least 1 special character</li>
+          </ul>
+        </div>
+        <input
+          type="submit"
+          value="Change Password"
+          class="form-button"
+          title="Click here to change password"
+        >
+        <input type="hidden" name="account_id" 
+        <% if(locals.account_id) { %> value="<%= locals.account_id %> " <% } %>>
+      </form>
+    </div>
