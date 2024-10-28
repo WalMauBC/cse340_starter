@@ -148,28 +148,16 @@ async function accountLogin(req, res) {
 
 
  /* ****************************************
-
-
-
-
-
-
-
-
-
  *  Deliver Management view
  * ************************************ */
 async function buildManagement(req, res, next) {
   let nav = await utilities.getNav()
-
-
-
-
-
+  
   res.render("account/management", {
     nav,
     title: "Account Management",
     errors: null,
+    msgNum: 7
     //account_firstname: res.locals.accountData.account_firstname
   })
 } 
