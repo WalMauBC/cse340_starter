@@ -8,7 +8,8 @@ const invValidate = require("../utilities/inventory-validation"); // Ensure corr
 
 // Route to build inventory by classification view
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
-router.get("/detail/:invId", utilities.handleErrors(invController.getInventoryItemDetail));
+// router.get("/detail/:invId", utilities.handleErrors(invController.getInventoryItemDetail));
+router.get("/detail/:invId", utilities.handleErrors(invController.buildByInventoryId));
 
 // Route to get inventory items by classification (unique path)
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
