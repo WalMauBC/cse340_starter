@@ -13,10 +13,12 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const accountRoute = require("./routes/accountRoute")
+//const reviewRoute = require("./routes/reviewRoute")
+//const serverErrorRoute = require("./routes/serverErrorRoute")
 const utilities = require("./utilities/")
 const session = require("express-session")
 const pool = require('./database/')
-
+const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 
 /********** 
@@ -81,7 +83,11 @@ app.get("/", function(req, res) {
 app.use(async (err, req, res, next) => {
   let nav = await utilities.getNav()
   console.error(`Error at: "${req.originalUrl}": ${err.message}`)
-  if (err.status == 404){message = err.message} else {message = 'Oh no! There was a crash. Maybe try a different route?'}
+  if(err.status == 404)
+    {message = err.message} 
+  else if(err.status == 500) {
+    message = await utilities.buildErrorMessage(err)
+  } else {message = 'Oh no! There was a crash. Maybe try a different route?'}
   res.render("errors/error", {
     title: err.status || 'Server Error',
     message,
