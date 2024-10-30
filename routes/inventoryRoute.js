@@ -11,6 +11,27 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 // router.get("/detail/:invId", utilities.handleErrors(invController.getInventoryItemDetail));
 router.get("/detail/:invId", utilities.handleErrors(invController.buildByInventoryId));
 
+// Management View Route
+router.get(
+    "/",
+    // utilities.checkAccountType,
+    utilities.handleErrors(invController.buildManagement)
+)
+
+// Build addClassification View Route
+router.get(
+    "/newClassification",
+    // utilities.checkAccountType,
+    utilities.handleErrors(invController.buildAddView)
+)
+
+// Build add-vehicle View Route
+router.get(
+    "/newVehicle",
+    // utilities.checkAccountType,
+    utilities.handleErrors(invController.buildAddInv)
+)
+
 // Route to get inventory items by classification (unique path)
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
 
@@ -46,5 +67,37 @@ router.post('/add-inventory', [
 //     invValidate.checkInvName,
 //     utilities.handleErrors(invController.addInventory)
 // );
+
+/* ****************************************
+ * Deliver the edit inventory view
+ **************************************** */
+router.get(
+    "/edit/:inv_id",
+    utilities.handleErrors(invController.editInvItemView)
+)
+
+/* ****************************************
+ * Process the edit inventory request
+ **************************************** */
+router.post(
+    "/update",
+    utilities.handleErrors(invController.updateInventory)
+)
+
+/* ****************************************
+ * Deliver the delete confirmation view
+ **************************************** */
+router.get(
+    "/delete/:inv_id",
+    utilities.handleErrors(invController.deleteView)
+)
+
+/* ****************************************
+ * Process the delete inventory request
+ **************************************** */
+router.post(
+    "/delete",
+    utilities.handleErrors(invController.deleteItem)
+)
 
 module.exports = router;

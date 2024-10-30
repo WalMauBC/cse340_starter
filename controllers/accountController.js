@@ -152,18 +152,29 @@ async function accountLogin(req, res) {
  * ************************************ */
 async function buildManagement(req, res, next) {
   let nav = await utilities.getNav()
-  
+
   res.render("account/management", {
     nav,
     title: "Account Management",
     errors: null,
     msgNum: 7
-    //account_firstname: res.locals.accountData.account_firstname
   })
 } 
 
+async function buildUpdate (req, res, next) {
+  let nav = await utilities.getNav()
+  const account_id = parseInt(req.params.id)
+  const accountData = await accountModel.getAccountById(account_id)
+  res.render("account/update", {
+      title: "Edit Account",
+      nav,
+      errors: null,
+      account_id: accountData.account_id,
+      account_firstname: accountData.account_firstname,
+      account_lastname: accountData.account_lastname,
+      account_email: accountData.account_email,
+  })
+}
 
-
-
-
-module.exports = { buildLogin, buildRegister, registerAccount, loginAccount, accountLogin, buildManagement }
+module.exports = { buildLogin, buildRegister, registerAccount, loginAccount, accountLogin, buildManagement, buildUpdate }
+    

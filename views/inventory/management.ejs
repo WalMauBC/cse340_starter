@@ -1,26 +1,32 @@
-<% if (errors) { %>
-    <ul class="notice">
-        <% errors.array().forEach(error => { %>
-            <li><%= error.msg%></li>
-        <% }) %>
+<div id="account-management">
+    <% if (title) { %>
+        <h1><%= title %></h1>
+    <% } %>
+
+    <h3>Welcome <%= locals.account_firstname %></h3>
+
+    <%- messages() %>
+
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.array().forEach(error => { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+    <ul class="boldList">
+        <li><a href="/inv/newClassification/" title="Click to add a new vehicle classification">Add New Classification</a></li>
+        <li><a href="/inv/newVehicle/" title="Click to add a new vehicle">Add New Vehicle</a></li>
     </ul>
-<% } %>
 
- <h3>Message Center</h3>
+    <h2>Manage Inventory</h2>
+    <p>Choose a classification to see those inventory items.</p>
+    <%- classificationSelect %>
 
-<ul>
-    <li class="font-1">You have 7 unread messages</li>
-    <li class="font-1">Go to <a href="/message/">Inbox</a></li>
-</ul>
+    <table id="inventoryDisplay"></table>
 
-<% if (locals.accountData.account_type === "Employee" || locals.accountData.account_type === "Admin") { %>
+    <noscript>JavaScript must be enabled to use this page.</noscript>
 
-    <br>
-    <div class="inv-management-container">
-        <h3>Inventory Management</h3>
-        <div><a href="/inv">Manage Inventory</a></div>
-    </div>
-<% } %>
+    <script src="../../js/inventory.js"></script>
 </div>
-
-<p><a href="/inv">Edit Account Information</a></p>

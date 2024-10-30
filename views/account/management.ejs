@@ -9,7 +9,7 @@
  <h3>Message Center</h3>
 
 <ul>
-    <li class="font-1">You have <%= msgNum %> unread messages</li>
+    <li class="font-1">You have <%=  msgNum %> unread messages</li>
     <li class="font-1">Go to <a href="/message/">Inbox</a></li>
 </ul>
 
@@ -23,6 +23,6 @@
 <% } %>
 </div>
 
-<p><a href="/inv">Edit Account Information</a></p>
+<p><a href="/account/update/<%= locals.accountData.account_id %>">Edit Account Information</a></p>
 
 </div>

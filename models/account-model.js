@@ -11,10 +11,10 @@ async function registerAccount(account_firstname, account_lastname, account_emai
       return error.message
     }
   }
-  
+
 /* **********************
- *   Check for existing email
- * ********************* */
+*   Check for existing email
+* ********************* */
 async function checkExistingEmail(account_email){
   try {
     const sql = "SELECT * FROM account WHERE account_email = $1"
@@ -52,4 +52,19 @@ async function getAccountByEmail (account_email) {
   }
 }
 
-  module.exports = {registerAccount, checkExistingEmail, loginAccount, getAccountByEmail}
+/* *****************************
+*  Return account using account_id
+* ***************************** */
+async function getAccountById (account_id) {
+  try {
+      const res = await pool.query(
+          'SELECT account_id, account_firstname, account_lastname, account_email, account_type, account_password FROM account WHERE account_id = $1',
+          [account_id]
+      )
+      return res.rows[0]
+  } catch (error) {
+      throw new Error('Query failed.')
+  }
+}
+
+  module.exports = {registerAccount, checkExistingEmail, loginAccount, getAccountByEmail, getAccountById}
